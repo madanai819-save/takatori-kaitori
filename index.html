@@ -268,9 +268,14 @@ section{padding:56px 0;}
 =================================================================== */
 .hero{
   position:relative;
-  background:
+  /* 店舗外観写真(storefront.jpg)を背景に使用。未配置でもグラデーションのみで成立する */
+  background-image:
     radial-gradient(1200px 600px at 20% -10%, rgba(182,144,63,0.35), transparent 60%),
-    linear-gradient(160deg,var(--navy) 0%, var(--navy-2) 60%, #16264a 100%);
+    linear-gradient(160deg, rgba(19,31,61,0.87) 0%, rgba(29,47,87,0.85) 55%, rgba(22,38,74,0.85) 100%),
+    url('storefront.jpg');
+  background-repeat:no-repeat, no-repeat, no-repeat;
+  background-position:20% -10%, center, center;
+  background-size:auto, auto, cover;
   color:#fff;
   padding:40px 20px 32px;
   overflow:hidden;
@@ -328,25 +333,6 @@ section{padding:56px 0;}
   border-radius:999px;
   font-size:0.74rem;
   font-weight:600;
-}
-.hero-media{
-  margin:0 0 26px;
-}
-.hero-media img{
-  width:100%;
-  height:auto;
-  aspect-ratio:4/3;
-  object-fit:cover;
-  border-radius:var(--radius);
-  border:1.5px solid var(--gold-light);
-  box-shadow:var(--shadow);
-  background:#1d2f57;
-}
-.hero-media figcaption{
-  margin-top:10px;
-  text-align:center;
-  font-size:0.8rem;
-  color:var(--gold-light);
 }
 .cta-row{display:flex;flex-direction:column;gap:14px;max-width:420px;}
 .cta-block{display:flex;flex-direction:column;gap:6px;}
@@ -899,7 +885,7 @@ form.contact-form{
   .assurance-grid{grid-template-columns:repeat(6,1fr);}
   .item-grid{grid-template-columns:repeat(4,1fr);}
   .reason-grid{grid-template-columns:1fr 1fr;}
-  .photo-grid{grid-template-columns:repeat(3,1fr);}
+  .photo-grid{grid-template-columns:repeat(2,1fr);max-width:640px;margin-left:auto;margin-right:auto;}
   .contact-grid{grid-template-columns:repeat(3,1fr);}
   .result-grid{grid-template-columns:repeat(3,1fr);}
   .method-grid{grid-template-columns:repeat(3,1fr);}
@@ -913,28 +899,6 @@ form.contact-form{
   .hero h1{font-size:2.8rem;}
 }
 
-/* ---------- Hero：PCでは2カラム（左：テキスト＋CTA／右：店舗写真） ---------- */
-@media (min-width:960px){
-  .hero-inner{
-    display:grid;
-    grid-template-columns:1.15fr 0.9fr;
-    column-gap:48px;
-    row-gap:0;
-    align-items:start;
-    grid-template-areas:
-      "eyebrow media"
-      "heading media"
-      "lead     media"
-      "support  media"
-      "cta      media";
-  }
-  .hero-eyebrow{grid-area:eyebrow;}
-  .hero h1{grid-area:heading;}
-  .hero .lead{grid-area:lead;}
-  .hero-supporting{grid-area:support;}
-  .hero-media{grid-area:media;align-self:center;margin:0;}
-  .hero .cta-row{grid-area:cta;max-width:none;}
-}
 </style>
 </head>
 <body>
@@ -999,12 +963,6 @@ form.contact-form{
         <li>即日現金化</li>
       </ul>
     </div>
-
-    <!-- 店舗外観写真：同じ階層に storefront.jpg を配置してください（1200x900px推奨）。未配置でもレイアウトは大きく崩れません -->
-    <figure class="hero-media">
-      <img src="storefront.jpg" alt="枚方市宮之阪の高価買取タカトル店舗外観" width="1200" height="900" loading="eager" fetchpriority="high">
-      <figcaption>宮之阪駅徒歩2分・高価買取タカトル</figcaption>
-    </figure>
 
     <div class="cta-row">
       <!--
@@ -1483,13 +1441,6 @@ form.contact-form{
           <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='3'%3E%3Crect width='4' height='3' fill='%23f1ece0'/%3E%3C/svg%3E" alt="高価買取タカトル 店内・査定スペース" width="400" height="300" loading="lazy">
         </div>
         <p class="media-caption">店内・査定スペース</p>
-      </div>
-      <div>
-        <!-- 査定スタッフ写真に差し替えてください -->
-        <div class="media-frame">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='3'%3E%3Crect width='4' height='3' fill='%23f1ece0'/%3E%3C/svg%3E" alt="高価買取タカトル 査定スタッフ" width="400" height="300" loading="lazy">
-        </div>
-        <p class="media-caption">査定スタッフ</p>
       </div>
     </div>
 
