@@ -597,30 +597,6 @@ section{padding:56px 0;}
 .voice-card dd{margin:0;color:var(--text);}
 .voice-card .comment{font-size:0.85rem;color:var(--text);border-top:1px dashed var(--line);padding-top:10px;}
 
-/* ---------- 店舗・スタッフ ---------- */
-.photo-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:28px;}
-.media-frame{
-  aspect-ratio:4/3;
-  background:#f1ece0;
-  border:1.5px solid var(--gold-light);
-  border-radius:var(--radius);
-  overflow:hidden;
-  position:relative;
-}
-.media-frame img{width:100%;height:100%;object-fit:cover;}
-.media-caption{
-  text-align:center;font-size:0.8rem;color:var(--gray);margin-top:8px;
-}
-.staff-box{
-  background:var(--white);
-  border-radius:var(--radius);
-  padding:24px 22px;
-  border:1px solid var(--line);
-  box-shadow:var(--shadow);
-}
-.staff-box h3{font-size:1.1rem;margin-bottom:10px;}
-.staff-box p{font-size:0.9rem;color:var(--text);}
-
 /* ---------- Flow ---------- */
 .flow-list{display:flex;flex-direction:column;gap:0;}
 .flow-item{
@@ -885,7 +861,6 @@ form.contact-form{
   .assurance-grid{grid-template-columns:repeat(6,1fr);}
   .item-grid{grid-template-columns:repeat(4,1fr);}
   .reason-grid{grid-template-columns:1fr 1fr;}
-  .photo-grid{grid-template-columns:repeat(2,1fr);max-width:640px;margin-left:auto;margin-right:auto;}
   .contact-grid{grid-template-columns:repeat(3,1fr);}
   .result-grid{grid-template-columns:repeat(3,1fr);}
   .method-grid{grid-template-columns:repeat(3,1fr);}
@@ -1416,38 +1391,6 @@ form.contact-form{
         <svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-external"></use></svg>
       </a>
       <p class="cta-caption">Googleの検索結果が新しいタブで開きます</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 店舗・スタッフ紹介 ================= -->
-<section class="section-white" id="store">
-  <div class="wrap">
-    <div class="eyebrow">STORE</div>
-    <h2 class="sec-title">店舗・スタッフ紹介</h2>
-    <p class="sec-sub">宮之阪駅から徒歩2分。査定だけでも気軽に立ち寄れる、枚方市の買取専門店です。</p>
-
-    <div class="photo-grid">
-      <div>
-        <!-- 店舗外観写真に差し替えてください -->
-        <div class="media-frame">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='3'%3E%3Crect width='4' height='3' fill='%23f1ece0'/%3E%3C/svg%3E" alt="高価買取タカトル 店舗外観" width="400" height="300" loading="lazy">
-        </div>
-        <p class="media-caption">店舗外観</p>
-      </div>
-      <div>
-        <!-- 店内・査定スペース写真に差し替えてください -->
-        <div class="media-frame">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='3'%3E%3Crect width='4' height='3' fill='%23f1ece0'/%3E%3C/svg%3E" alt="高価買取タカトル 店内・査定スペース" width="400" height="300" loading="lazy">
-        </div>
-        <p class="media-caption">店内・査定スペース</p>
-      </div>
-    </div>
-
-    <div class="staff-box">
-      <h3>大切な品物だからこそ、丁寧に拝見します</h3>
-      <!-- 代表者名・スタッフ名・経歴は未確認のため記載していません。確定後に追記してください -->
-      <p>売却を急かすことはありません。査定額や理由をご確認いただき、ご納得いただいた場合のみお売りください。相場確認だけのご相談も歓迎しています。</p>
     </div>
   </div>
 </section>
