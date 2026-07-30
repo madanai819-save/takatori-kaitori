@@ -14,6 +14,20 @@ Vanilla HTML / CSS / JavaScriptのみで構成された静的サイトで、Netl
 | `apple-touch-icon.png` | iOSホーム画面アイコン | **未配置。要アップロード** |
 | `ogp.jpg` | SNSシェア用OGP画像（1200×630px推奨） | **未配置。要アップロード** |
 | `タカとる.html` / `タカとる_backup.html` | 旧バージョンの下書き | 参考用。LINEリンクが `href="#"` のままなど古い不具合が残っているため、**公開フォルダには含めない**ことを推奨します |
+| `netlify.toml` | Netlifyのビルド設定（`publish = "."`） | 新規作成済み |
+
+## Netlifyのデプロイ設定について
+
+このサイトはビルド不要な静的サイトのため、`netlify.toml` で公開ディレクトリを明示しています。
+
+```toml
+[build]
+publish = "."
+```
+
+Netlify管理画面の「Site configuration」→「Build & deploy」→「Build settings」で Publish directory が
+全角文字（`．`）など誤った値になっている場合、`netlify.toml` の設定が優先されるため通常は自動的に解消されますが、
+管理画面側の値も念のため半角の `.`（もしくは空欄）に修正しておくことを推奨します。
 
 画像はダミー画像を自動生成していません。`storefront.jpg`は`index.html`と同じ階層にある`images`フォルダの中（`images/storefront.jpg`）に配置してください。`favicon.png`・`apple-touch-icon.png`・`ogp.jpg`は従来通り`index.html`と同じ階層（ルート直下）に配置してください。
 `storefront.jpg` が未配置でも、`index.html` 側で`onerror`によりフォールバックする実装になっているため、レイアウトが大きく崩れることはありません。
