@@ -268,17 +268,29 @@ section{padding:56px 0;}
 =================================================================== */
 .hero{
   position:relative;
-  /* 店舗外観写真(storefront.jpg)を背景に使用。未配置でもグラデーションのみで成立する */
-  background-image:
-    radial-gradient(1200px 600px at 20% -10%, rgba(182,144,63,0.35), transparent 60%),
-    linear-gradient(160deg, rgba(19,31,61,0.87) 0%, rgba(29,47,87,0.85) 55%, rgba(22,38,74,0.85) 100%),
-    url('storefront.jpg');
-  background-repeat:no-repeat, no-repeat, no-repeat;
-  background-position:20% -10%, center, center;
-  background-size:auto, auto, cover;
+  background:var(--navy);
   color:#fff;
   padding:40px 20px 32px;
   overflow:hidden;
+}
+/* 店舗外観写真：実imgをheroの背景として敷き、上からネイビーのグラデーションを重ねる */
+.hero-bg-photo{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:35% 38%; /* 看板「高価買取タカトル」が中心に来るよう調整 */
+  z-index:0;
+  background:var(--navy); /* storefront.jpg未配置時の代替色。配置後は写真で隠れる */
+}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background-image:
+    radial-gradient(1200px 600px at 20% -10%, rgba(182,144,63,0.3), transparent 60%),
+    linear-gradient(160deg, rgba(19,31,61,0.58) 0%, rgba(29,47,87,0.52) 55%, rgba(22,38,74,0.52) 100%);
 }
 .hero::after{
   content:"";
@@ -287,6 +299,7 @@ section{padding:56px 0;}
   width:260px;height:260px;
   border-radius:50%;
   border:1px solid rgba(227,201,138,0.25);
+  z-index:1;
 }
 .hero::before{
   content:"";
@@ -295,8 +308,12 @@ section{padding:56px 0;}
   width:150px;height:150px;
   border-radius:50%;
   border:1px solid rgba(227,201,138,0.18);
+  z-index:1;
 }
-.hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:2;}
+.hero-inner{
+  max-width:1080px;margin:0 auto;position:relative;z-index:2;
+  text-shadow:0 1px 6px rgba(8,13,26,0.55), 0 1px 2px rgba(8,13,26,0.45);
+}
 .hero-eyebrow{
   color:var(--gold-light);
   font-size:0.8rem;
@@ -315,6 +332,11 @@ section{padding:56px 0;}
   font-size:0.92rem;
   margin:0 0 14px;
   max-width:34em;
+}
+.hero-photo-caption{
+  color:#d8d3c3;
+  font-size:0.82rem;
+  margin:0 0 20px;
 }
 .hero .assist-line{
   color:var(--gold-light);
@@ -451,35 +473,85 @@ section{padding:56px 0;}
 .ng-box li{font-size:0.85rem;color:var(--text);margin-bottom:4px;}
 .ng-box p.small{font-size:0.78rem;color:var(--gray);margin-top:12px;margin-bottom:0;}
 
-/* ---------- 実績カード ---------- */
-.result-grid{display:grid;grid-template-columns:1fr;gap:16px;}
-.result-card{
-  background:var(--white);
-  border-radius:var(--radius);
+/* ---------- 買取実績ギャラリー ---------- */
+.gallery-section{background:var(--white);padding:96px 0;}
+.gallery-heading{
+  font-size:1.8rem;
+  text-align:center;
+  margin-bottom:56px;
+  letter-spacing:0.04em;
+}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:28px;
+}
+.gallery-item{
+  display:block;
+  width:100%;
+  padding:0;
+  border:none;
+  background:none;
+  cursor:zoom-in;
+  border-radius:14px;
   overflow:hidden;
-  border:1px solid var(--line);
-  box-shadow:var(--shadow);
+  box-shadow:0 12px 32px -16px rgba(19,31,61,0.22);
+  aspect-ratio:1/1;
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .7s ease, transform .7s ease, box-shadow .3s ease, transform .3s ease;
 }
-.result-media{
-  width:100%;aspect-ratio:4/3;
-  background:#f1ece0;
-  display:flex;align-items:center;justify-content:center;
-  color:var(--gold);
+.gallery-item.in-view{opacity:1;transform:translateY(0);}
+.gallery-item:hover,
+.gallery-item:focus-visible{
+  box-shadow:0 20px 40px -14px rgba(19,31,61,0.3);
 }
-.result-body{padding:16px 18px;}
-.result-body .cat{font-size:0.72rem;color:var(--gold);font-weight:700;letter-spacing:0.05em;margin-bottom:4px;display:block;}
-.result-body h3{font-size:1rem;margin-bottom:6px;}
-.result-body .date{font-size:0.72rem;color:var(--gray);margin-bottom:10px;display:block;}
-.result-body .comment{font-size:0.85rem;color:var(--text);margin-bottom:10px;line-height:1.7;}
-.result-body .price{
-  font-family:'Shippori Mincho',serif;
-  font-weight:700;
-  color:var(--navy);
-  font-size:0.95rem;
-  border-top:1px dashed var(--line);
-  padding-top:10px;
+.gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .5s ease;
 }
-.result-body .caution{font-size:0.68rem;color:var(--gray);margin-top:6px;}
+.gallery-item:hover img,
+.gallery-item:focus-visible img{
+  transform:scale(1.06);
+}
+@media (prefers-reduced-motion: reduce){
+  .gallery-item{opacity:1;transform:none;transition:none;}
+  .gallery-item img{transition:none;}
+  .gallery-item:hover img{transform:none;}
+}
+
+/* ライトボックス */
+.lightbox{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(10,14,26,0.92);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+}
+.lightbox[hidden]{display:none;}
+.lightbox-img{
+  max-width:100%;
+  max-height:100%;
+  border-radius:8px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+.lightbox-close{
+  position:absolute;
+  top:20px;right:20px;
+  width:44px;height:44px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,0.5);
+  background:rgba(255,255,255,0.08);
+  color:#fff;
+  font-size:1.4rem;
+  line-height:1;
+  cursor:pointer;
+}
 
 /* ---------- LINE査定 ---------- */
 .line-section{
@@ -648,10 +720,10 @@ section{padding:56px 0;}
   margin-bottom:18px;
   background:#1d2f57;
 }
-.map-visual{
-  width:100%;aspect-ratio:16/10;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:8px;color:#c9c2ab;font-size:0.85rem;
+.map-embed{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/10;
 }
 .map-actions{display:flex;flex-wrap:wrap;gap:10px;padding:16px;background:rgba(255,255,255,0.03);}
 .access-note{font-size:0.78rem;color:#c9c2ab;margin-top:-6px;margin-bottom:20px;}
@@ -862,7 +934,7 @@ form.contact-form{
   .item-grid{grid-template-columns:repeat(4,1fr);}
   .reason-grid{grid-template-columns:1fr 1fr;}
   .contact-grid{grid-template-columns:repeat(3,1fr);}
-  .result-grid{grid-template-columns:repeat(3,1fr);}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
   .method-grid{grid-template-columns:repeat(3,1fr);}
   .line-steps{grid-template-columns:repeat(3,1fr);}
   .voice-grid{grid-template-columns:repeat(3,1fr);}
@@ -872,6 +944,7 @@ form.contact-form{
 }
 @media (min-width:1080px){
   .hero h1{font-size:2.8rem;}
+  .gallery-grid{grid-template-columns:repeat(4,1fr);}
 }
 
 </style>
@@ -885,7 +958,6 @@ form.contact-form{
   <defs>
     <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></symbol>
     <symbol id="icon-chat" viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.4 1.3 4.6 3.4 6.1-.1 1-.5 2.3-1.3 3.4-.1.2 0 .5.3.5 1.7-.2 3.3-.9 4.5-1.7.9.2 1.9.3 3 .3 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></symbol>
-    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.4 6.9 11.3 7.2 11.6.2.2.5.2.7 0C12.1 21.3 19 15.4 19 10c0-4.4-3.6-8-8-8zm0 10.8A2.8 2.8 0 1 1 12 6.4a2.8 2.8 0 0 1 0 5.6z"/></symbol>
     <symbol id="icon-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="icon-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="icon-truck" viewBox="0 0 24 24"><path d="M3 6h11v9H3zM14 10h4l3 3v2h-7zM6.5 19a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6zM17.5 19a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
@@ -914,6 +986,16 @@ form.contact-form{
 
 <!-- ================= HERO（ファーストビュー） ================= -->
 <section class="hero">
+  <!--
+    店舗外観写真。storefront.jpg は images/storefront.jpg に配置してください
+    （index.htmlから見て images フォルダの中）。ファイルが無い間はonerrorで
+    非表示になりグラデーションのみの表示にフォールバックするため、
+    レイアウトが崩れることはありません。
+    alt文言は実際に確認した店舗外観の見た目に基づく仮のテキストです。
+    実際の見え方と齟齬があれば修正してください。
+  -->
+  <img class="hero-bg-photo" src="images/storefront.jpg" alt="高価買取タカトル 店舗外観（クリーム色の看板とウッド調シャッターが目印）" loading="eager" fetchpriority="high" onerror="this.style.display='none';">
+  <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-inner">
     <p class="hero-eyebrow">大阪府枚方市・宮之阪駅 徒歩2分の買取専門店</p>
 
@@ -926,6 +1008,7 @@ form.contact-form{
     <h1>捨てる前に、その品物の価値を確かめませんか？</h1>
 
     <p class="lead">ブランド品・貴金属・時計・古銭・切手・不用品まで。査定だけ、相場確認だけでも歓迎します。</p>
+    <p class="hero-photo-caption">こちらの外観が目印です。初めての方もお気軽にお立ち寄りください。</p>
 
     <div class="hero-supporting">
       <p class="assist-line">査定無料・キャンセル無料・出張査定無料</p>
@@ -1011,97 +1094,6 @@ form.contact-form{
         写真を送って査定を相談する
       </a>
       <p class="cta-caption">LINEが開きます</p>
-    </div>
-  </div>
-</section>
-
-<!-- =================================================================
-     最近の買取実績（非公開・要対応）
-     実際の買取データ（商品写真・査定時期・担当者コメント・査定額）が
-     ないため、hidden属性で非表示にしています。仮データのまま公開しない
-     でください。実績が揃ったら、下記6枠の中身を実データに差し替えたうえで
-     section要素の hidden 属性を削除して公開してください。
-================================================================= -->
-<section class="section-white" id="results" hidden>
-  <div class="wrap">
-    <div class="eyebrow">RESULTS</div>
-    <h2 class="sec-title">最近の買取実績</h2>
-    <p class="sec-sub">商品の状態やブランドにより査定額は異なります。まずは目安としてご覧ください。</p>
-    <!-- 実際の買取商品写真・査定額・査定日へ差し替えてください（下記6枠はすべて仮データです） -->
-    <div class="result-grid">
-
-      <article class="result-card">
-        <div class="result-media" aria-hidden="true"><svg class="ic" width="32" height="32"><use href="#icon-box"></use></svg></div>
-        <div class="result-body">
-          <span class="cat">ブランドバッグ</span>
-          <h3>商品名を入力してください</h3>
-          <span class="date">査定時期：20XX年XX月</span>
-          <p class="comment">査定担当者のコメントをここに入力してください。</p>
-          <p class="price">査定額は店頭でご案内</p>
-          <p class="caution">※商品の状態により査定額は異なります</p>
-        </div>
-      </article>
-
-      <article class="result-card">
-        <div class="result-media" aria-hidden="true"><svg class="ic" width="32" height="32"><use href="#icon-box"></use></svg></div>
-        <div class="result-body">
-          <span class="cat">腕時計</span>
-          <h3>商品名を入力してください</h3>
-          <span class="date">査定時期：20XX年XX月</span>
-          <p class="comment">査定担当者のコメントをここに入力してください。</p>
-          <p class="price">査定額は店頭でご案内</p>
-          <p class="caution">※商品の状態により査定額は異なります</p>
-        </div>
-      </article>
-
-      <article class="result-card">
-        <div class="result-media" aria-hidden="true"><svg class="ic" width="32" height="32"><use href="#icon-box"></use></svg></div>
-        <div class="result-body">
-          <span class="cat">貴金属</span>
-          <h3>商品名を入力してください</h3>
-          <span class="date">査定時期：20XX年XX月</span>
-          <p class="comment">査定担当者のコメントをここに入力してください。</p>
-          <p class="price">査定額は店頭でご案内</p>
-          <p class="caution">※商品の状態により査定額は異なります</p>
-        </div>
-      </article>
-
-      <article class="result-card">
-        <div class="result-media" aria-hidden="true"><svg class="ic" width="32" height="32"><use href="#icon-box"></use></svg></div>
-        <div class="result-body">
-          <span class="cat">古銭・切手</span>
-          <h3>商品名を入力してください</h3>
-          <span class="date">査定時期：20XX年XX月</span>
-          <p class="comment">査定担当者のコメントをここに入力してください。</p>
-          <p class="price">査定額は店頭でご案内</p>
-          <p class="caution">※商品の状態により査定額は異なります</p>
-        </div>
-      </article>
-
-      <article class="result-card">
-        <div class="result-media" aria-hidden="true"><svg class="ic" width="32" height="32"><use href="#icon-box"></use></svg></div>
-        <div class="result-body">
-          <span class="cat">お酒</span>
-          <h3>商品名を入力してください</h3>
-          <span class="date">査定時期：20XX年XX月</span>
-          <p class="comment">査定担当者のコメントをここに入力してください。</p>
-          <p class="price">査定額は店頭でご案内</p>
-          <p class="caution">※商品の状態により査定額は異なります</p>
-        </div>
-      </article>
-
-      <article class="result-card">
-        <div class="result-media" aria-hidden="true"><svg class="ic" width="32" height="32"><use href="#icon-box"></use></svg></div>
-        <div class="result-body">
-          <span class="cat">遺品整理・不用品</span>
-          <h3>商品名を入力してください</h3>
-          <span class="date">査定時期：20XX年XX月</span>
-          <p class="comment">査定担当者のコメントをここに入力してください。</p>
-          <p class="price">査定額は店頭でご案内</p>
-          <p class="caution">※商品の状態により査定額は異なります</p>
-        </div>
-      </article>
-
     </div>
   </div>
 </section>
@@ -1451,14 +1443,16 @@ form.contact-form{
 
     <div class="map-block">
       <!--
-        実際のGoogleマップ埋め込みURLが用意でき次第、下の .map-visual を以下のようなiframeに差し替えてください。
-        <iframe src="https://www.google.com/maps/embed?pb=REPLACE_EMBED_URL"
-          width="100%" height="320" style="border:0;" allowfullscreen loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade" title="高価買取タカトルの地図"></iframe>
+        Google Maps Embed API(要APIキー)は未契約のため、キー不要な
+        "output=embed" 形式で埋め込んでいます。正式なEmbed API URLが
+        用意でき次第、src属性のみ差し替えてください（レイアウトはそのまま使えます）。
       -->
-      <div class="map-visual">
-        <svg class="ic" width="30" height="30" aria-hidden="true"><use href="#icon-pin"></use></svg>
-        大阪府枚方市宮之阪3-11-12
+      <div class="map-embed">
+        <iframe
+          src="https://www.google.com/maps?q=%E5%A4%A7%E9%98%AA%E5%BA%9C%E6%9E%9A%E6%96%B9%E5%B8%82%E5%AE%AE%E4%B9%8B%E9%98%AA3-11-12&output=embed"
+          width="100%" height="100%" style="border:0;position:absolute;inset:0;"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="高価買取タカトルの地図（大阪府枚方市宮之阪3-11-12）"></iframe>
       </div>
       <div class="map-actions">
         <a href="https://www.google.com/maps/search/?api=1&query=大阪府枚方市宮之阪3-11-12" class="btn btn-gold btn-sm" data-track="map-click" target="_blank" rel="noopener noreferrer">
@@ -1717,6 +1711,33 @@ form.contact-form{
   </div>
 </section>
 
+<!-- ================= 買取実績ギャラリー ================= -->
+<section class="gallery-section" id="gallery" aria-label="買取実績ギャラリー">
+  <div class="wrap">
+    <h2 class="gallery-heading">買取実績</h2>
+    <div class="gallery-grid">
+      <button class="gallery-item" type="button" data-full="images/results/result-1.jpg">
+        <img src="images/results/result-1.jpg" alt="ブランドバッグの買取実績" loading="lazy" width="1108" height="1477">
+      </button>
+      <button class="gallery-item" type="button" data-full="images/results/result-2.jpg">
+        <img src="images/results/result-2.jpg" alt="ジュエリー・指輪の買取実績" loading="lazy" width="1200" height="1267">
+      </button>
+      <button class="gallery-item" type="button" data-full="images/results/result-3.jpg">
+        <img src="images/results/result-3.jpg" alt="ブランドバッグの買取実績" loading="lazy" width="1200" height="926">
+      </button>
+      <button class="gallery-item" type="button" data-full="images/results/result-4.jpg">
+        <img src="images/results/result-4.jpg" alt="貴金属・アクセサリーの買取実績" loading="lazy" width="1200" height="910">
+      </button>
+      <button class="gallery-item" type="button" data-full="images/results/result-5.jpg">
+        <img src="images/results/result-5.jpg" alt="ブランドバッグの買取実績" loading="lazy" width="1200" height="900">
+      </button>
+      <button class="gallery-item" type="button" data-full="images/results/result-6.jpg">
+        <img src="images/results/result-6.jpg" alt="腕時計の買取実績" loading="lazy" width="1200" height="960">
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- ================= 最終CTA ================= -->
 <section class="final-cta">
   <div class="wrap">
@@ -1777,6 +1798,12 @@ form.contact-form{
     <small>写真を送るだけ</small>
   </a>
 </nav>
+
+<!-- ================= 買取実績ライトボックス ================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="買取実績の拡大写真" hidden>
+  <button class="lightbox-close" type="button" id="lightbox-close" aria-label="閉じる">&times;</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+</div>
 
 <script>
 (function () {
@@ -1856,6 +1883,54 @@ form.contact-form{
     el.addEventListener('click', function () {
       trackEvent(el.getAttribute('data-track'));
     });
+  });
+
+  /* ---------- 買取実績ギャラリー：スクロールでふわっと表示 ---------- */
+  var galleryItems = document.querySelectorAll('.gallery-item');
+  if ('IntersectionObserver' in window && galleryItems.length) {
+    var revealObserver = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    galleryItems.forEach(function (item) { revealObserver.observe(item); });
+  } else {
+    galleryItems.forEach(function (item) { item.classList.add('in-view'); });
+  }
+
+  /* ---------- 買取実績ギャラリー：ライトボックス ---------- */
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+  var lightboxClose = document.getElementById('lightbox-close');
+  var lastFocusedEl = null;
+
+  function openLightbox(src, alt) {
+    lastFocusedEl = document.activeElement;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.hidden = false;
+    lightboxClose.focus();
+  }
+  function closeLightbox() {
+    lightbox.hidden = true;
+    lightboxImg.src = '';
+    if (lastFocusedEl) { lastFocusedEl.focus(); }
+  }
+  galleryItems.forEach(function (item) {
+    item.addEventListener('click', function () {
+      var img = item.querySelector('img');
+      openLightbox(item.getAttribute('data-full'), img ? img.alt : '');
+    });
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) { closeLightbox(); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !lightbox.hidden) { closeLightbox(); }
   });
 })();
 </script>

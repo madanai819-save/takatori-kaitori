@@ -9,14 +9,14 @@ Vanilla HTML / CSS / JavaScriptのみで構成された静的サイトで、Netl
 | --- | --- | --- |
 | `index.html` | トップページ（本体） | 公開用に修正済み |
 | `thanks.html` | お問い合わせ送信完了ページ | 新規作成済み（`noindex`設定済み） |
-| `storefront.jpg` | ファーストビューの店舗外観写真（1200×900px推奨） | **未配置。要アップロード** |
+| `images/storefront.jpg` | ファーストビューの店舗外観写真（1200×900px推奨） | **未配置。要アップロード** |
 | `favicon.png` | ファビコン | **未配置。要アップロード** |
 | `apple-touch-icon.png` | iOSホーム画面アイコン | **未配置。要アップロード** |
 | `ogp.jpg` | SNSシェア用OGP画像（1200×630px推奨） | **未配置。要アップロード** |
 | `タカとる.html` / `タカとる_backup.html` | 旧バージョンの下書き | 参考用。LINEリンクが `href="#"` のままなど古い不具合が残っているため、**公開フォルダには含めない**ことを推奨します |
 
-画像はダミー画像を自動生成していません。上記ファイル名でご用意のうえ、`index.html` と同じ階層に配置してください。
-`storefront.jpg` が未配置でも、`index.html` 側で `width`/`height`/`aspect-ratio` を指定しているため、レイアウトが大きく崩れることはありません（画像枠の分だけ余白が確保されます）。
+画像はダミー画像を自動生成していません。`storefront.jpg`は`index.html`と同じ階層にある`images`フォルダの中（`images/storefront.jpg`）に配置してください。`favicon.png`・`apple-touch-icon.png`・`ogp.jpg`は従来通り`index.html`と同じ階層（ルート直下）に配置してください。
+`storefront.jpg` が未配置でも、`index.html` 側で`onerror`によりフォールバックする実装になっているため、レイアウトが大きく崩れることはありません。
 
 ## Netlify Forms の設定手順（フォーム通知）
 
