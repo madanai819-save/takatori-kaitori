@@ -101,23 +101,23 @@
    トークン定義
 =================================================================== */
 :root{
-  --navy:#131f3d;
-  --navy-2:#1d2f57;
-  --navy-soft:#eef1f7;
-  --gold:#b6903f;
-  --gold-light:#e3c98a;
+  --navy:#14233d;
+  --navy-2:#1c3153;
+  --navy-soft:#eef1f6;
+  --gold:#b8913b;
+  --gold-light:#e2c98d;
+  --gold-deep:#8f6d29;
   --white:#ffffff;
-  --offwhite:#faf8f4;
-  --accent:#d1481f;
-  --accent-2:#e8663c;
-  --green:#06C755;
-  --green-2:#05a648;
-  --text:#241f1a;
-  --gray:#6c6660;
-  --line:#e5ded0;
+  --offwhite:#f8f6f1;
+  --green:#1e9e57;
+  --green-2:#177f45;
+  --warn:#a3423a;
+  --text:#333333;
+  --gray:#5f5c56;
+  --line:#e4ddd0;
   --radius:18px;
   --radius-sm:10px;
-  --shadow: 0 10px 30px -12px rgba(19,31,61,0.18);
+  --shadow: 0 10px 30px -12px rgba(20,35,61,0.18);
   --tap:44px;
 }
 
@@ -187,7 +187,7 @@ textarea:focus-visible, select:focus-visible{
 }
 
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
-section{padding:56px 0;}
+section{padding:56px 0;scroll-margin-top:76px;}
 .section-offwhite{background:var(--offwhite);}
 .section-white{background:var(--white);}
 .section-navy{background:var(--navy);color:#f2ede2;}
@@ -252,8 +252,8 @@ section{padding:56px 0;}
 .brand-text small{display:block;font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:0.6rem;color:var(--gold-light);letter-spacing:0.1em;}
 .header-cta{display:flex;gap:8px;}
 .btn-call-mini{
-  background:var(--accent);
-  color:#fff;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--navy);
   padding:8px 14px;
   min-height:var(--tap);
   border-radius:999px;
@@ -369,9 +369,10 @@ section{padding:56px 0;}
   box-shadow:var(--shadow);
 }
 .btn:active{transform:scale(0.97);}
-.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);}
 .btn-line{background:linear-gradient(135deg,var(--green),var(--green-2));color:#fff;font-size:1.05rem;padding:18px 20px;}
 .btn-outline{background:transparent;border:1.5px solid var(--gold-light);color:var(--gold-light);}
+.btn-outline-navy{background:var(--white);border:1.5px solid var(--gold);color:var(--navy);}
 .btn-navy{background:var(--navy);color:#fff;}
 .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);}
 .btn-sm{padding:10px 16px;font-size:0.85rem;min-height:auto;}
@@ -409,7 +410,7 @@ section{padding:56px 0;}
   font-family:'Shippori Mincho',serif;
   font-size:1.5rem;
   font-weight:800;
-  color:var(--accent);
+  color:var(--gold-deep);
   display:block;
   margin-bottom:4px;
 }
@@ -468,7 +469,7 @@ section{padding:56px 0;}
   border-radius:var(--radius);
   padding:22px;
 }
-.ng-box h3{font-size:1rem;margin-bottom:10px;color:var(--accent);}
+.ng-box h3{font-size:1rem;margin-bottom:10px;color:var(--navy);}
 .ng-box ul{list-style:disc;padding-left:1.2em;}
 .ng-box li{font-size:0.85rem;color:var(--text);margin-bottom:4px;}
 .ng-box p.small{font-size:0.78rem;color:var(--gray);margin-top:12px;margin-bottom:0;}
@@ -760,7 +761,7 @@ section{padding:56px 0;}
 }
 .hours-card .tag{
   display:inline-block;
-  background:var(--accent);
+  background:var(--navy);
   color:#fff;
   font-size:0.75rem;
   font-weight:700;
@@ -828,7 +829,7 @@ section{padding:56px 0;}
 }
 .disclosure-box ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;}
 .disclosure-box li{font-size:0.82rem;color:var(--text);display:flex;gap:6px;align-items:flex-start;}
-.disclosure-box li .ic{color:var(--accent);margin-top:2px;}
+.disclosure-box li .ic{color:var(--gold-deep);margin-top:2px;}
 form.contact-form{
   background:var(--white);
   border-radius:var(--radius);
@@ -855,7 +856,7 @@ form.contact-form{
   padding:0;
   border:none;
   background:none;
-  accent-color:var(--accent);
+  accent-color:var(--navy);
   flex-shrink:0;
   margin-top:3px;
 }
@@ -870,17 +871,17 @@ form.contact-form{
   color:var(--text);
   font-weight:400;
 }
-.required-tag{background:var(--accent);color:#fff;font-size:0.62rem;padding:2px 6px;border-radius:4px;margin-left:6px;font-weight:700;}
+.required-tag{background:var(--navy);color:#fff;font-size:0.62rem;padding:2px 6px;border-radius:4px;margin-left:6px;font-weight:700;}
 .optional-tag{background:var(--navy-soft);color:var(--navy);font-size:0.62rem;padding:2px 6px;border-radius:4px;margin-left:6px;font-weight:700;}
 .form-error{
-  color:var(--accent);
+  color:var(--warn);
   font-size:0.78rem;
   font-weight:700;
   margin-top:6px;
   display:none;
 }
 .form-error.show{display:block;}
-.form-row input[aria-invalid="true"],.form-row select[aria-invalid="true"]{border-color:var(--accent);}
+.form-row input[aria-invalid="true"],.form-row select[aria-invalid="true"]{border-color:var(--warn);}
 .form-submit-note{font-size:0.78rem;color:var(--gray);text-align:center;margin-top:12px;}
 .hp-field{position:absolute;left:-9999px;}
 
@@ -929,7 +930,7 @@ form.contact-form{
 }
 .sticky-cta a .top{display:flex;align-items:center;gap:6px;}
 .sticky-cta a small{font-weight:400;font-size:0.68rem;opacity:0.9;}
-.sticky-cta .call{background:var(--accent);flex:1;}
+.sticky-cta .call{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);flex:1;}
 .sticky-cta .line{background:linear-gradient(135deg,var(--green),var(--green-2));flex:1.4;}
 
 /* ---------- Utility ---------- */
@@ -1068,20 +1069,30 @@ form.contact-form{
   </div>
 </section>
 
-<!-- ================= 安心材料 ================= -->
-<section class="section-white" aria-label="ご利用にあたっての安心材料">
+<!-- ================= 買取実績ギャラリー ================= -->
+<section class="gallery-section" id="gallery" aria-label="買取実績ギャラリー">
   <div class="wrap">
-    <div class="eyebrow">SAFETY</div>
-    <h2 class="sec-title">安心してご相談いただくために</h2>
-    <p class="sec-sub">費用面・キャンセルのご不安がないよう、条件をはっきりお伝えします。</p>
-    <ul class="assurance-grid">
-      <li class="assurance-card"><span class="big-num">0円</span><span class="label">査定料</span></li>
-      <li class="assurance-card"><span class="big-num">0円</span><span class="label">出張費</span></li>
-      <li class="assurance-card"><span class="big-num">0円</span><span class="label">キャンセル料</span></li>
-      <li class="assurance-card"><span class="big-num"><svg class="ic" width="24" height="24" aria-hidden="true"><use href="#icon-check"></use></svg></span><span class="label">断ってもOK</span></li>
-      <li class="assurance-card"><span class="big-num">5分〜</span><span class="label">査定スピード</span><span class="note">※商品数・品目により異なります</span></li>
-      <li class="assurance-card"><span class="big-num">即日</span><span class="label">現金化</span></li>
-    </ul>
+    <h2 class="gallery-heading">買取実績</h2>
+    <div class="gallery-grid">
+      <button class="gallery-item" type="button" data-full="images/results/result-1.jpg">
+        <img src="images/results/result-1.jpg" alt="ブランドバッグの買取実績" loading="lazy" width="1108" height="1477">
+      </button>
+      <button class="gallery-item" type="button" data-full="images/results/result-2.jpg">
+        <img src="images/results/result-2.jpg" alt="ジュエリー・指輪の買取実績" loading="lazy" width="1200" height="1267">
+      </button>
+      <button class="gallery-item" type="button" data-full="images/results/result-3.jpg">
+        <img src="images/results/result-3.jpg" alt="ブランドバッグの買取実績" loading="lazy" width="1200" height="926">
+      </button>
+      <button class="gallery-item" type="button" data-full="images/results/result-4.jpg">
+        <img src="images/results/result-4.jpg" alt="貴金属・アクセサリーの買取実績" loading="lazy" width="1200" height="910">
+      </button>
+      <button class="gallery-item" type="button" data-full="images/results/result-5.jpg">
+        <img src="images/results/result-5.jpg" alt="ブランドバッグの買取実績" loading="lazy" width="1200" height="900">
+      </button>
+      <button class="gallery-item" type="button" data-full="images/results/result-6.jpg">
+        <img src="images/results/result-6.jpg" alt="腕時計の買取実績" loading="lazy" width="1200" height="960">
+      </button>
+    </div>
   </div>
 </section>
 
@@ -1108,6 +1119,90 @@ form.contact-form{
         写真を送って査定を相談する
       </a>
       <p class="cta-caption">LINEが開きます</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 安心材料 ================= -->
+<section class="section-white" aria-label="ご利用にあたっての安心材料">
+  <div class="wrap">
+    <div class="eyebrow">SAFETY</div>
+    <h2 class="sec-title">安心してご相談いただくために</h2>
+    <p class="sec-sub">費用面・キャンセルのご不安がないよう、条件をはっきりお伝えします。</p>
+    <ul class="assurance-grid">
+      <li class="assurance-card"><span class="big-num">0円</span><span class="label">査定料</span></li>
+      <li class="assurance-card"><span class="big-num">0円</span><span class="label">出張費</span></li>
+      <li class="assurance-card"><span class="big-num">0円</span><span class="label">キャンセル料</span></li>
+      <li class="assurance-card"><span class="big-num"><svg class="ic" width="24" height="24" aria-hidden="true"><use href="#icon-check"></use></svg></span><span class="label">断ってもOK</span></li>
+      <li class="assurance-card"><span class="big-num">5分〜</span><span class="label">査定スピード</span><span class="note">※商品数・品目により異なります</span></li>
+      <li class="assurance-card"><span class="big-num">即日</span><span class="label">現金化</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= 査定額に納得していただくために ================= -->
+<section class="section-offwhite" id="trust">
+  <div class="wrap">
+    <div class="eyebrow">OUR APPRAISAL</div>
+    <h2 class="sec-title">査定額に納得していただくために</h2>
+    <p class="sec-sub">根拠のない「高額査定」を約束するのではなく、査定の考え方をお伝えします。</p>
+    <div class="trust-list">
+      <div class="trust-item"><span class="trust-num">01</span><p>品物ごとに市場相場を確認します。</p></div>
+      <div class="trust-item"><span class="trust-num">02</span><p>ブランド・状態・付属品まで丁寧に確認します。</p></div>
+      <div class="trust-item"><span class="trust-num">03</span><p>再販先や需要を踏まえて査定します。</p></div>
+      <div class="trust-item"><span class="trust-num">04</span><p>査定額の理由を分かりやすくご説明します。</p></div>
+      <div class="trust-item"><span class="trust-num">05</span><p>金額に納得できなければ、無料でキャンセルいただけます。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 選ばれる理由 ================= -->
+<section class="section-white" id="reasons">
+  <div class="wrap">
+    <div class="eyebrow">WHY TAKATORU</div>
+    <h2 class="sec-title">タカトルをご利用いただくメリット</h2>
+    <p class="sec-sub">お客様にとっての変化を大切にしています。</p>
+    <div class="reason-grid">
+      <div class="reason-card">
+        <div class="reason-num">01</div>
+        <div><h3>捨てる前に、まず価値を確認できる</h3><p>不要かもと思った品も、専門知識をもったスタッフが査定します。価値が分からないまま処分する前に、ぜひご相談ください。</p></div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">02</div>
+        <div><h3>査定額を見てから、売るかどうか決められる</h3><p>査定後のキャンセルは無料です。金額にご納得いただいた場合のみ、売却をお決めください。</p></div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">03</div>
+        <div><h3>重い品物を運ばなくて大丈夫</h3><p>大阪府内は出張費・査定料無料。大量の品物や遺品整理も、ご自宅でご相談いただけます。</p></div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">04</div>
+        <div><h3>家の中の品物をまとめて相談できる</h3><p>ブランド品、貴金属、時計、古銭、切手、お酒、ゲーム機、日用品まで幅広く対応します。</p></div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">05</div>
+        <div><h3>片付けと現金化を同時に進められる</h3><p>不用品の整理と買取をあわせて進められるので、片付けの負担を減らせます。</p></div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">06</div>
+        <div><h3>初めてでも流れが分かるので安心</h3><p>査定時間の目安は5〜20分。当日の流れを事前にご説明したうえで進めます。</p></div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">07</div>
+        <div><h3>強引な営業を心配せず相談できる</h3><p>査定だけのご利用も歓迎します。無理に売却をおすすめすることはありません。</p></div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">08</div>
+        <div><h3>その日のうちに現金を受け取れる</h3><p>店頭買取では、成約後にその場で現金をお渡しします。ご希望により銀行振込にも対応します。</p></div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">09</div>
+        <div><h3>駐車場代を気にせず来店できる</h3><p>専用駐車場1台に加え、近隣コインパーキングもご利用いただけます（駐車場代は当店負担・ご利用条件は来店前にご確認ください）。</p></div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">10</div>
+        <div><h3>LINEで写真を送って事前に相談できる</h3><p>来店前に、写真だけで概算の相場を確認できます。</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1179,6 +1274,64 @@ form.contact-form{
   </div>
 </section>
 
+<!-- ================= 3つの買取方法 ================= -->
+<section class="section-white" id="methods">
+  <div class="wrap">
+    <div class="eyebrow">HOW TO SELL</div>
+    <h2 class="sec-title">ご都合に合わせて選べる3つの買取方法</h2>
+    <p class="sec-sub">店頭・出張・宅配、それぞれの特徴からお選びいただけます。</p>
+
+    <div class="method-grid">
+      <div class="method-card">
+        <svg class="ic" width="28" height="28" aria-hidden="true" style="color:var(--gold);"><use href="#icon-store"></use></svg>
+        <h3>店頭買取</h3>
+        <p class="fit">向いている人：今日中に査定・現金化したい方</p>
+        <ul>
+          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>予約不要</li>
+          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>最短5分査定</li>
+          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>その場で現金化</li>
+          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>宮之阪駅徒歩2分</li>
+          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>駐車場あり</li>
+        </ul>
+        <div class="cta-block">
+          <a href="#access" class="btn btn-outline-navy btn-sm" data-track="visit-reservation">店舗アクセスを見る</a>
+          <p class="cta-caption">アクセス情報へ移動します</p>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <svg class="ic" width="28" height="28" aria-hidden="true" style="color:var(--gold);"><use href="#icon-truck"></use></svg>
+        <h3>出張買取</h3>
+        <p class="fit">向いている人：大量の品物や、持ち運びが難しい方</p>
+        <ul>
+          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>大阪府内は出張費無料</li>
+          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>自宅で査定</li>
+          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>遺品整理や大量査定に対応</li>
+          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>査定後のキャンセル無料</li>
+        </ul>
+        <div class="cta-block">
+          <a href="#contact-form" class="btn btn-outline-navy btn-sm" data-track="home-visit-request">出張査定を相談する</a>
+          <p class="cta-caption">お問い合わせフォームへ移動します</p>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <svg class="ic" width="28" height="28" aria-hidden="true" style="color:var(--gold);"><use href="#icon-box"></use></svg>
+        <h3>宅配買取</h3>
+        <p class="fit">向いている人：来店時間を取りにくい方</p>
+        <ul>
+          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>ご自宅から発送可能</li>
+        </ul>
+        <p class="note">宅配買取の送料・返送料・発送方法については、事前にお問い合わせください。</p>
+        <div class="cta-block">
+          <a href="#contact-form" class="btn btn-outline-navy btn-sm" data-track="delivery-request">宅配買取について問い合わせる</a>
+          <p class="cta-caption">お問い合わせフォームへ移動します</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= LINE査定 ================= -->
 <section class="line-section" id="line">
   <div class="wrap">
@@ -1223,127 +1376,49 @@ form.contact-form{
   </div>
 </section>
 
-<!-- ================= 3つの買取方法 ================= -->
-<section class="section-white" id="methods">
+<!-- ================= 買取の流れ ================= -->
+<section class="section-white" id="flow">
   <div class="wrap">
-    <div class="eyebrow">HOW TO SELL</div>
-    <h2 class="sec-title">ご都合に合わせて選べる3つの買取方法</h2>
-    <p class="sec-sub">店頭・出張・宅配、それぞれの特徴からお選びいただけます。</p>
-
-    <div class="method-grid">
-      <div class="method-card">
-        <svg class="ic" width="28" height="28" aria-hidden="true" style="color:var(--gold);"><use href="#icon-store"></use></svg>
-        <h3>店頭買取</h3>
-        <p class="fit">向いている人：今日中に査定・現金化したい方</p>
-        <ul>
-          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>予約不要</li>
-          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>最短5分査定</li>
-          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>その場で現金化</li>
-          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>宮之阪駅徒歩2分</li>
-          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>駐車場あり</li>
-        </ul>
-        <div class="cta-block">
-          <a href="#access" class="btn btn-outline btn-sm" data-track="visit-reservation">店舗アクセスを見る</a>
-          <p class="cta-caption">アクセス情報へ移動します</p>
+    <div class="eyebrow">FLOW</div>
+    <h2 class="sec-title">買取の流れ</h2>
+    <p class="sec-sub">店頭・出張・宅配、ご都合の良い方法をお選びいただけます。</p>
+    <div class="flow-list">
+      <div class="flow-item">
+        <div class="flow-num" aria-hidden="true">01</div>
+        <div>
+          <h3>店頭・出張・宅配から選択</h3>
+          <p>ご都合に合わせて買取方法をお選びください。お電話・LINEでも承ります。</p>
         </div>
       </div>
-
-      <div class="method-card">
-        <svg class="ic" width="28" height="28" aria-hidden="true" style="color:var(--gold);"><use href="#icon-truck"></use></svg>
-        <h3>出張買取</h3>
-        <p class="fit">向いている人：大量の品物や、持ち運びが難しい方</p>
-        <ul>
-          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>大阪府内は出張費無料</li>
-          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>自宅で査定</li>
-          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>遺品整理や大量査定に対応</li>
-          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>査定後のキャンセル無料</li>
-        </ul>
-        <div class="cta-block">
-          <a href="#contact-form" class="btn btn-outline btn-sm" data-track="home-visit-request">出張査定を相談する</a>
-          <p class="cta-caption">お問い合わせフォームへ移動します</p>
+      <div class="flow-item">
+        <div class="flow-num" aria-hidden="true">02</div>
+        <div>
+          <h3>無料査定（5〜20分）</h3>
+          <p>経験豊富なスタッフが丁寧に査定いたします。最短5分でご案内可能です。</p>
         </div>
       </div>
-
-      <div class="method-card">
-        <svg class="ic" width="28" height="28" aria-hidden="true" style="color:var(--gold);"><use href="#icon-box"></use></svg>
-        <h3>宅配買取</h3>
-        <p class="fit">向いている人：来店時間を取りにくい方</p>
-        <ul>
-          <li><svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>ご自宅から発送可能</li>
-        </ul>
-        <p class="note">宅配買取の送料・返送料・発送方法については、事前にお問い合わせください。</p>
-        <div class="cta-block">
-          <a href="#contact-form" class="btn btn-outline btn-sm" data-track="delivery-request">宅配買取について問い合わせる</a>
-          <p class="cta-caption">お問い合わせフォームへ移動します</p>
+      <div class="flow-item">
+        <div class="flow-num" aria-hidden="true">03</div>
+        <div>
+          <h3>金額提示・ご相談</h3>
+          <p>査定額にご納得いただけない場合はキャンセルいただいても構いません。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num" aria-hidden="true">04</div>
+        <div>
+          <h3>即日現金渡し</h3>
+          <p>店頭ではその場で現金をお渡しします。ご希望により銀行振込も対応いたします。</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ================= 査定額に納得していただくために ================= -->
-<section class="section-offwhite" id="trust">
-  <div class="wrap">
-    <div class="eyebrow">OUR APPRAISAL</div>
-    <h2 class="sec-title">査定額に納得していただくために</h2>
-    <p class="sec-sub">根拠のない「高額査定」を約束するのではなく、査定の考え方をお伝えします。</p>
-    <div class="trust-list">
-      <div class="trust-item"><span class="trust-num">01</span><p>品物ごとに市場相場を確認します。</p></div>
-      <div class="trust-item"><span class="trust-num">02</span><p>ブランド・状態・付属品まで丁寧に確認します。</p></div>
-      <div class="trust-item"><span class="trust-num">03</span><p>再販先や需要を踏まえて査定します。</p></div>
-      <div class="trust-item"><span class="trust-num">04</span><p>査定額の理由を分かりやすくご説明します。</p></div>
-      <div class="trust-item"><span class="trust-num">05</span><p>金額に納得できなければ、無料でキャンセルいただけます。</p></div>
+    <div class="flow-highlight">
+      <strong>査定のみ・キャンセル無料</strong>
+      <span>「値段だけ知りたい」というご相談も大歓迎です。無理な営業は一切いたしません。</span>
     </div>
-  </div>
-</section>
-
-<!-- ================= 選ばれる理由 ================= -->
-<section class="section-white" id="reasons">
-  <div class="wrap">
-    <div class="eyebrow">WHY TAKATORU</div>
-    <h2 class="sec-title">タカトルをご利用いただくメリット</h2>
-    <p class="sec-sub">お客様にとっての変化を大切にしています。</p>
-    <div class="reason-grid">
-      <div class="reason-card">
-        <div class="reason-num">01</div>
-        <div><h3>捨てる前に、まず価値を確認できる</h3><p>不要かもと思った品も、専門知識をもったスタッフが査定します。価値が分からないまま処分する前に、ぜひご相談ください。</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">02</div>
-        <div><h3>査定額を見てから、売るかどうか決められる</h3><p>査定後のキャンセルは無料です。金額にご納得いただいた場合のみ、売却をお決めください。</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">03</div>
-        <div><h3>重い品物を運ばなくて大丈夫</h3><p>大阪府内は出張費・査定料無料。大量の品物や遺品整理も、ご自宅でご相談いただけます。</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">04</div>
-        <div><h3>家の中の品物をまとめて相談できる</h3><p>ブランド品、貴金属、時計、古銭、切手、お酒、ゲーム機、日用品まで幅広く対応します。</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">05</div>
-        <div><h3>片付けと現金化を同時に進められる</h3><p>不用品の整理と買取をあわせて進められるので、片付けの負担を減らせます。</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">06</div>
-        <div><h3>初めてでも流れが分かるので安心</h3><p>査定時間の目安は5〜20分。当日の流れを事前にご説明したうえで進めます。</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">07</div>
-        <div><h3>強引な営業を心配せず相談できる</h3><p>査定だけのご利用も歓迎します。無理に売却をおすすめすることはありません。</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">08</div>
-        <div><h3>その日のうちに現金を受け取れる</h3><p>店頭買取では、成約後にその場で現金をお渡しします。ご希望により銀行振込にも対応します。</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">09</div>
-        <div><h3>駐車場代を気にせず来店できる</h3><p>専用駐車場1台に加え、近隣コインパーキングもご利用いただけます（駐車場代は当店負担・ご利用条件は来店前にご確認ください）。</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">10</div>
-        <div><h3>LINEで写真を送って事前に相談できる</h3><p>来店前に、写真だけで概算の相場を確認できます。</p></div>
-      </div>
+    <div class="cta-block mt-24">
+      <a href="tel:0728086532" class="btn btn-primary" data-track="phone-flow">電話で買取対象か確認する</a>
+      <p class="cta-caption">電話アプリが起動します</p>
     </div>
   </div>
 </section>
@@ -1390,58 +1465,11 @@ form.contact-form{
 
     <!-- Googleビジネスプロフィールの実URLに差し替えてください -->
     <div class="cta-block">
-      <a href="https://www.google.com/search?q=%E9%AB%98%E4%BE%A1%E8%B2%B7%E5%8F%96%E3%82%BF%E3%82%AB%E3%83%88%E3%83%AB" class="btn btn-outline btn-sm" data-track="google-review-click" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.google.com/search?q=%E9%AB%98%E4%BE%A1%E8%B2%B7%E5%8F%96%E3%82%BF%E3%82%AB%E3%83%88%E3%83%AB" class="btn btn-outline-navy btn-sm" data-track="google-review-click" target="_blank" rel="noopener noreferrer">
         Google口コミを見る<span class="visually-hidden">（新しいタブで開きます）</span>
         <svg class="ic" width="14" height="14" aria-hidden="true"><use href="#icon-external"></use></svg>
       </a>
       <p class="cta-caption">Googleの検索結果が新しいタブで開きます</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 買取の流れ ================= -->
-<section class="section-offwhite" id="flow">
-  <div class="wrap">
-    <div class="eyebrow">FLOW</div>
-    <h2 class="sec-title">買取の流れ</h2>
-    <p class="sec-sub">店頭・出張・宅配、ご都合の良い方法をお選びいただけます。</p>
-    <div class="flow-list">
-      <div class="flow-item">
-        <div class="flow-num" aria-hidden="true">01</div>
-        <div>
-          <h3>店頭・出張・宅配から選択</h3>
-          <p>ご都合に合わせて買取方法をお選びください。お電話・LINEでも承ります。</p>
-        </div>
-      </div>
-      <div class="flow-item">
-        <div class="flow-num" aria-hidden="true">02</div>
-        <div>
-          <h3>無料査定（5〜20分）</h3>
-          <p>経験豊富なスタッフが丁寧に査定いたします。最短5分でご案内可能です。</p>
-        </div>
-      </div>
-      <div class="flow-item">
-        <div class="flow-num" aria-hidden="true">03</div>
-        <div>
-          <h3>金額提示・ご相談</h3>
-          <p>査定額にご納得いただけない場合はキャンセルいただいても構いません。</p>
-        </div>
-      </div>
-      <div class="flow-item">
-        <div class="flow-num" aria-hidden="true">04</div>
-        <div>
-          <h3>即日現金渡し</h3>
-          <p>店頭ではその場で現金をお渡しします。ご希望により銀行振込も対応いたします。</p>
-        </div>
-      </div>
-    </div>
-    <div class="flow-highlight">
-      <strong>査定のみ・キャンセル無料</strong>
-      <span>「値段だけ知りたい」というご相談も大歓迎です。無理な営業は一切いたしません。</span>
-    </div>
-    <div class="cta-block mt-24">
-      <a href="tel:0728086532" class="btn btn-primary" data-track="phone-flow">電話で買取対象か確認する</a>
-      <p class="cta-caption">電話アプリが起動します</p>
     </div>
   </div>
 </section>
@@ -1720,33 +1748,6 @@ form.contact-form{
   </div>
 </section>
 
-<!-- ================= 買取実績ギャラリー ================= -->
-<section class="gallery-section" id="gallery" aria-label="買取実績ギャラリー">
-  <div class="wrap">
-    <h2 class="gallery-heading">買取実績</h2>
-    <div class="gallery-grid">
-      <button class="gallery-item" type="button" data-full="images/results/result-1.jpg">
-        <img src="images/results/result-1.jpg" alt="ブランドバッグの買取実績" loading="lazy" width="1108" height="1477">
-      </button>
-      <button class="gallery-item" type="button" data-full="images/results/result-2.jpg">
-        <img src="images/results/result-2.jpg" alt="ジュエリー・指輪の買取実績" loading="lazy" width="1200" height="1267">
-      </button>
-      <button class="gallery-item" type="button" data-full="images/results/result-3.jpg">
-        <img src="images/results/result-3.jpg" alt="ブランドバッグの買取実績" loading="lazy" width="1200" height="926">
-      </button>
-      <button class="gallery-item" type="button" data-full="images/results/result-4.jpg">
-        <img src="images/results/result-4.jpg" alt="貴金属・アクセサリーの買取実績" loading="lazy" width="1200" height="910">
-      </button>
-      <button class="gallery-item" type="button" data-full="images/results/result-5.jpg">
-        <img src="images/results/result-5.jpg" alt="ブランドバッグの買取実績" loading="lazy" width="1200" height="900">
-      </button>
-      <button class="gallery-item" type="button" data-full="images/results/result-6.jpg">
-        <img src="images/results/result-6.jpg" alt="腕時計の買取実績" loading="lazy" width="1200" height="960">
-      </button>
-    </div>
-  </div>
-</section>
-
 <!-- ================= 最終CTA ================= -->
 <section class="final-cta">
   <div class="wrap">
@@ -1770,6 +1771,7 @@ form.contact-form{
     </div>
   </div>
 </section>
+
 
 </main>
 
