@@ -31,7 +31,6 @@
   - geo の緯度・経度は元データを引き継いでいます。実際の店舗位置と一致するか必ず確認してください。
   - sameAs（公式SNS等のURL）は実在するアカウントが確定してから追加してください。未確定のため今回は記載していません。
   - aggregateRating / review は実際の口コミデータがないため追加していません。捏造しないでください。
-  - 古物商許可番号が確定したら、必要に応じて identifier や description に追記してください。
 -->
 <script type="application/ld+json">
 {
@@ -43,6 +42,11 @@
   "url": "https://takatori-kaitori.jp/",
   "telephone": "+81-72-808-6532",
   "priceRange": "査定無料",
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "古物商許可番号",
+    "value": "大阪府公安委員会 第62226R086071号"
+  },
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "宮之阪3-11-12",
@@ -894,6 +898,30 @@ form.contact-form{
 .final-cta h2{color:#fff;margin-bottom:10px;}
 .final-cta p{color:#d8d3c3;font-size:0.92rem;margin-bottom:26px;}
 .final-cta .cta-row{margin:0 auto;}
+
+/* ---------- 会社概要 (Company) ---------- */
+.company-section{padding:40px 0;}
+.company-section .sec-title{font-size:1.3rem;margin-bottom:24px;}
+.company-table{width:100%;border-collapse:collapse;}
+.company-table tr{border-bottom:1px solid var(--line);}
+.company-table tr:last-child{border-bottom:none;}
+.company-table th{
+  text-align:left;
+  font-family:'Shippori Mincho',serif;
+  color:var(--navy);
+  font-weight:600;
+  padding:14px 20px 14px 0;
+  font-size:0.85rem;
+  white-space:nowrap;
+  vertical-align:top;
+  width:120px;
+}
+.company-table td{padding:14px 0;font-size:0.88rem;color:var(--text);line-height:1.7;}
+.company-table td a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px;}
+.company-table .license-num{display:block;color:var(--gray);font-size:0.82rem;margin-top:2px;}
+@media (min-width:720px){
+  .company-table th{width:150px;}
+}
 
 /* ---------- Footer ---------- */
 .site-footer{
@@ -1771,6 +1799,25 @@ form.contact-form{
   </div>
 </section>
 
+<!-- ================= 会社概要 ================= -->
+<section class="section-white company-section" id="company" aria-label="会社概要">
+  <div class="wrap">
+    <div class="eyebrow">COMPANY</div>
+    <h2 class="sec-title">会社概要</h2>
+    <table class="company-table">
+      <tr><th>会社名</th><td>合同会社ソル</td></tr>
+      <tr><th>所在地</th><td>大阪府枚方市宮之阪3-11-12</td></tr>
+      <tr><th>電話番号</th><td><a href="tel:0728086532">072-808-6532</a></td></tr>
+      <tr>
+        <th>古物商許可</th>
+        <td>
+          大阪府公安委員会許可
+          <span class="license-num">第62226R086071号</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>
 
 </main>
 
@@ -1784,10 +1831,10 @@ form.contact-form{
       <p>電話番号：<a href="tel:0728086532">072-808-6532</a></p>
       <p>営業時間：9:30〜19:00（定休日なし）</p>
       <p>メール：<a href="mailto:takatoru.0801@gmail.com">takatoru.0801@gmail.com</a></p>
+      <p>古物商許可：大阪府公安委員会許可　第62226R086071号</p>
     </div>
     <!--
       以下は未確定情報のため非表示にしています。確定次第、上の .footer-info 内に追加してください。
-      古物商許可番号：公開前に正式な番号を入力してください
       代表者名：公開前に正式な氏名を入力してください
       プライバシーポリシー：ページ作成後にURLを入力してください
       特定商取引法に関する表記：ページ作成後にURLを入力してください（宅配買取等の通信販売要素がある場合は特に必須）
